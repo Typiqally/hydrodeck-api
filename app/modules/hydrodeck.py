@@ -3,25 +3,35 @@ import app.modules.gpio as gpio
 
 GPIO = gpio.GPIO
 
-output_pins = [
-    config.OPEN_GPIO_PIN,
-    config.CLOSE_GPIO_PIN,
-    config.STOP_GPIO_PIN,
-]
+action_pins = {
+    0: config.CLOSE_GPIO_PIN,
+    1: config.OPEN_GPIO_PIN,
+    2: config.CLOSE_GPIO_PIN,
+}
 
 
 def setup():
     GPIO.setmode(GPIO.BCM)
 
-    for pin in output_pins:
+    for pin in action_pins:
         GPIO.setup(pin, GPIO.OUT)
 
     reset_output()
 
 
 def reset_output():
-    for pin in output_pins:
+    for pin in action_pins:
         GPIO.output(pin, GPIO.LOW)
+
+
+def execute_action(action: int):
+    if not gpio.is_imported or action not in action_pins:
+        return False
+
+    reset_output()
+    GPIO.output(action_pins.get(action), GPIO.HIGH)
+
+    return True
 
 
 def get_status():
