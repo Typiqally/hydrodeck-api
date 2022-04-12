@@ -1,0 +1,4 @@
+# GPIO pin configuration
+OPEN_GPIO_PIN = 17
+CLOSE_GPIO_PIN = 27
+STOP_GPIO_PIN = 22
