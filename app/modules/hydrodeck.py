@@ -4,7 +4,7 @@ import app.modules.gpio as gpio
 GPIO = gpio.GPIO
 
 action_pins = {
-    0: config.CLOSE_GPIO_PIN,
+    0: config.STOP_GPIO_PIN,
     1: config.OPEN_GPIO_PIN,
     2: config.CLOSE_GPIO_PIN,
 }
@@ -20,8 +20,8 @@ def setup():
 
 
 def reset_output():
-    for pin in action_pins:
-        GPIO.output(pin, GPIO.LOW)
+    for action in action_pins:
+        GPIO.output(action_pins[action], GPIO.LOW)
 
 
 def execute_action(action: int):
