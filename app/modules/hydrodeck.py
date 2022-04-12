@@ -17,7 +17,7 @@ try:
 
 
     def setup():
-        GPIO.setmode(GPIO.BOARD)
+        GPIO.setmode(GPIO.BCM)
 
         for pin in output_pins:
             setup_output(pin)
