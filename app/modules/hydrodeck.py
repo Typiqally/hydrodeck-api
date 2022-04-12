@@ -36,7 +36,7 @@ def execute_action(action: int):
 
 def get_status():
     return {
-        "is_controllable": gpio.is_imported
+        "connected": gpio.is_imported
     }
 
 
