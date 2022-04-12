@@ -13,8 +13,8 @@ action_pins = {
 def setup():
     GPIO.setmode(GPIO.BCM)
 
-    for pin in action_pins:
-        GPIO.setup(pin, GPIO.OUT)
+    for action in action_pins:
+        GPIO.setup(action_pins[action], GPIO.OUT)
 
     reset_output()
 
