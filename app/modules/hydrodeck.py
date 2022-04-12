@@ -14,12 +14,14 @@ def setup():
     GPIO.setmode(GPIO.BCM)
 
     for pin in output_pins:
-        setup_output(pin)
+        GPIO.setup(pin, GPIO.OUT)
+
+    reset_output()
 
 
-def setup_output(pin):
-    GPIO.setup(pin, GPIO.OUT)
-    GPIO.output(pin, GPIO.LOW)
+def reset_output():
+    for pin in output_pins:
+        GPIO.output(pin, GPIO.LOW)
 
 
 def get_status():
